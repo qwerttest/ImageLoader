@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xiu8.base.ximageloader" >
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <application>
+        <meta-data
+            android:name="com.xiu8.base.ximageloader.AppGlideModule"
+            android:value="GlideModule"></meta-data>
+    </application>
+
+</manifest>
+

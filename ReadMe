@@ -1,0 +1,26 @@
+1.在工程根目录下增加
+..
+..
+allprojects {
+    repositories {
+        jcenter()
+        maven{ url 'http://192.168.1.201:8081/nexus/content/groups/andorid.tag'}
+    }
+}
+..
+..
+
+2.在要使用的工程下添加
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    ...
+    ...
+    compile 'com.xiu8.media.library:media:1.0.0@aar'
+    compile 'io.agora:agora:1.0.0@aar'
+    compile 'com.faceunity:faceunity:1.0.0@aar'
+    compile 'org.adw.library:discrete-seekbar:1.0.1'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+}
+
+3.混淆：
+-keep class com.faceunity.FUManager {*;}
