@@ -1,7 +1,6 @@
-package com.xiu8.base.ximageloader;
+package com.wj.base.imgloader;
 
 import android.graphics.drawable.Drawable;
-import android.widget.LinearLayout;
 
 import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.animation.GlideAnimation;

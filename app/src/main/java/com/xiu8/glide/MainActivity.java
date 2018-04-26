@@ -4,18 +4,13 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.xiu8.base.ximageloader.XImageFileListener;
-import com.xiu8.base.ximageloader.XImageListener;
-import com.xiu8.base.ximageloader.XImageLoader;
-import com.xiu8.base.ximageloader.XImageOptions;
-import com.xiu8.base.ximageloader.XImagePreloadListener;
-
-import java.io.File;
+import com.wj.base.imgloader.XImageLoader;
+import com.wj.base.imgloader.XImageOptions;
+import com.wj.base.imgloader.XImagePreloadListener;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{

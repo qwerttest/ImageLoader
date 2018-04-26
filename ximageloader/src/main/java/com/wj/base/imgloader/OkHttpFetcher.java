@@ -1,4 +1,4 @@
-package com.xiu8.base.ximageloader;
+package com.wj.base.imgloader;
 
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.data.DataFetcher;

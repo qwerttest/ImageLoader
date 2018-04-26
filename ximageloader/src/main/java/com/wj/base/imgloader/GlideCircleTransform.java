@@ -1,4 +1,4 @@
-package com.xiu8.base.ximageloader;
+package com.wj.base.imgloader;
 
 import android.content.Context;
 import android.graphics.Bitmap;

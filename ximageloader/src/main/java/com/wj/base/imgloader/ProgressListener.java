@@ -1,4 +1,4 @@
-package com.xiu8.base.ximageloader;
+package com.wj.base.imgloader;
 
 /**
  * Created by yangxu on 2018/4/2.

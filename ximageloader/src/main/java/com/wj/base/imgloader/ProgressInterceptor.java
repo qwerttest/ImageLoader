@@ -1,4 +1,4 @@
-package com.xiu8.base.ximageloader;
+package com.wj.base.imgloader;
 
 import java.io.IOException;
 import java.util.HashMap;

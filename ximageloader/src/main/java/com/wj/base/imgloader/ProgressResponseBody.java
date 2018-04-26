@@ -1,6 +1,5 @@
-package com.xiu8.base.ximageloader;
+package com.wj.base.imgloader;
 
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.io.IOException;
