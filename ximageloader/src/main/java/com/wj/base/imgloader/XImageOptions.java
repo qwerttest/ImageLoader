@@ -55,7 +55,7 @@ public final class XImageOptions {
         private int roundDp = -1;
         private float thumbnail = -1;
         private boolean isCircle = false;
-        private boolean isCacheable = true;
+        private boolean isCacheable = false;
 
         public Builder() {
         }
