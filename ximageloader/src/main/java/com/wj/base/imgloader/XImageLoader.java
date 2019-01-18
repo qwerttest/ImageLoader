@@ -236,6 +236,7 @@ public final class XImageLoader implements IXImage {
             options.transform(new GlideCircleTransform(application));
         }
         options.skipMemoryCache(params.isCacheable());
+        options.dontAnimate();
         return options;
     }
 
