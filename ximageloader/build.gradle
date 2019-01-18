@@ -33,4 +33,37 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.squareup.okhttp3:okhttp:3.10.0'
 }
-//apply from:"maven-branch.gradle"
+
+ext {
+
+    siteUrl = 'https://github.com/qwerttest/ImageLoader'
+    //项目下载地址
+    gitUrl = 'https://github.com/qwerttest/ImageLoader.git'
+
+    //要发布的仓库，需要在jCenter中创建
+    bintrayRepo = 'maven'
+    //在maven仓库中创建的工程的名字
+    bintrayName = 'ImgLoader'
+
+    //要发布到的group的标识，使用module包名即可
+    publishedGroupId = 'com.wj.base.ximageloader'
+    //libraryName, artifact, moduleName必须保持一致
+    libraryName = 'ximageloader'
+    //artifactId 要发布的工程的标识
+    artifact = 'ximageloader'
+    libraryDescription = '图片加载封装'//项目描述
+    //要发布的版本号
+    libraryVersion = '1.0.1'
+  
+    //发布者的信息
+    developerId = 'jin'
+    developerName = 'jin'
+    developerEmail = 'wj19890810@gmail.com'
+
+    //许可信息，不用修改
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from:'upload.gradle'
