@@ -1,6 +1,8 @@
 package com.wj.base.imgloader;
 
+import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Log;
@@ -134,7 +136,17 @@ public final class XImageLoader implements IXImage {
         if (defaultParams == null) {
             throw new RuntimeException("没有初始化");
         }
-        DrawableTypeRequest<T> tDrawableTypeRequest = setOptions(Glide.with(imageView.getContext()).load(url), params);
+        Context context = imageView.getContext();
+        if(context == null){
+            return;
+        }
+        if(context instanceof Activity){
+            if(((Activity)context).isFinishing()){
+                return;
+            }
+        }
+
+        DrawableTypeRequest<T> tDrawableTypeRequest = setOptions(Glide.with(context).load(url), params);
         if (url instanceof String) {
             final String key = (String) url;
             tDrawableTypeRequest.into(new GlideDrawableImageViewTarget(imageView) {
