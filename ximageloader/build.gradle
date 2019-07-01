@@ -53,7 +53,7 @@ ext {
     artifact = 'ximageloader'
     libraryDescription = '图片加载封装'//项目描述
     //要发布的版本号
-    libraryVersion = '1.0.1'
+    libraryVersion = '1.0.2'
   
     //发布者的信息
     developerId = 'jin'
