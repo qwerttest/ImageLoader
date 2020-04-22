@@ -179,15 +179,16 @@ public final class XImageLoader implements IXImage {
 
                 @Override
                 public void onStop() {
+                    ProgressInterceptor.removeListener(key);
                     if (listener != null) {
                         listener.onStop();
                     }
                     super.onStop();
-
                 }
 
                 @Override
                 public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                    ProgressInterceptor.removeListener(key);
                     if (listener != null) {
                         listener.onLoadFailed(errorDrawable);
                     }
