@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -144,61 +145,66 @@ public final class XImageLoader implements IXImage {
             if(((Activity)context).isFinishing()){
                 return;
             }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && ((Activity) context).isDestroyed()) {
+                return;
+            }
         }
-
-        DrawableTypeRequest<T> tDrawableTypeRequest = setOptions(Glide.with(context).load(url), params);
-        if (url instanceof String) {
-            final String key = (String) url;
-            tDrawableTypeRequest.into(new GlideDrawableImageViewTarget(imageView) {
-                //如果设置了缩略图,该方法会被回调两次
-                @Override
-                public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
-                    Log.i(TAG, "onResourceReady");
-                    ProgressInterceptor.removeListener(key);
-                    if (listener == null || !listener.onDrawableReady(resource)) {
-                        super.onResourceReady(resource, animation);
-                    }
-                }
-
-
-                @Override
-                public void onStart() {
-                    if (listener != null) {
-                        listener.onStart();
-                    }
-                    ProgressInterceptor.addListener(key, new ProgressListener() {
-                        @Override
-                        public void onProgress(int progress) {
-                            if (listener != null) {
-                                listener.onProgress(progress);
-                            }
+        try {
+            DrawableTypeRequest<T> tDrawableTypeRequest = setOptions(Glide.with(context).load(url), params);
+            if (url instanceof String) {
+                final String key = (String) url;
+                tDrawableTypeRequest.into(new GlideDrawableImageViewTarget(imageView) {
+                    //如果设置了缩略图,该方法会被回调两次
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
+                        Log.i(TAG, "onResourceReady");
+                        ProgressInterceptor.removeListener(key);
+                        if (listener == null || !listener.onDrawableReady(resource)) {
+                            super.onResourceReady(resource, animation);
                         }
-                    });
-                    super.onStart();
-                }
-
-                @Override
-                public void onStop() {
-                    ProgressInterceptor.removeListener(key);
-                    if (listener != null) {
-                        listener.onStop();
                     }
-                    super.onStop();
-                }
 
-                @Override
-                public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                    ProgressInterceptor.removeListener(key);
-                    if (listener != null) {
-                        listener.onLoadFailed(errorDrawable);
+
+                    @Override
+                    public void onStart() {
+                        if (listener != null) {
+                            listener.onStart();
+                        }
+                        ProgressInterceptor.addListener(key, new ProgressListener() {
+                            @Override
+                            public void onProgress(int progress) {
+                                if (listener != null) {
+                                    listener.onProgress(progress);
+                                }
+                            }
+                        });
+                        super.onStart();
                     }
-                    super.onLoadFailed(e, errorDrawable);
-                }
-            });
-        } else {
-            tDrawableTypeRequest.into(imageView);
+
+                    @Override
+                    public void onStop() {
+                        ProgressInterceptor.removeListener(key);
+                        if (listener != null) {
+                            listener.onStop();
+                        }
+                        super.onStop();
+                    }
+
+                    @Override
+                    public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                        ProgressInterceptor.removeListener(key);
+                        if (listener != null) {
+                            listener.onLoadFailed(errorDrawable);
+                        }
+                        super.onLoadFailed(e, errorDrawable);
+                    }
+                });
+            } else {
+                tDrawableTypeRequest.into(imageView);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
 
     private <T> DrawableTypeRequest<T> setOptions(DrawableTypeRequest<T> options, XImageOptions params) {
