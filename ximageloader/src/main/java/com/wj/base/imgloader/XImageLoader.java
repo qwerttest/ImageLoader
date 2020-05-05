@@ -142,10 +142,7 @@ public final class XImageLoader implements IXImage {
             return;
         }
         if(context instanceof Activity){
-            if(((Activity)context).isFinishing()){
-                return;
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && ((Activity) context).isDestroyed()) {
+            if (!XImageUtils.isActive((Activity) context)) {
                 return;
             }
         }
