@@ -18,7 +18,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "MainActivity";
     private Button mBtn;
     private ImageView mAvatar,mErrorAvator;
+
     private static final String url = "http://p0.so.qhimgs1.com/bdr/_240_/t01ccdbef5e84c61d8a.jpg";
+//  private static final String url = "http://guolin.tech/test.gif";
+//  private static final String url = "http://asgard.image.mucang.cn/asgard/2017/12/28/10/45ab2f68a13546c1914b61d54160b8ae.webp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
